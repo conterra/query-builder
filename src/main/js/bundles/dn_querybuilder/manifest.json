@@ -8,7 +8,9 @@
     "configBundleLocation": "dn_querybuilder-config",
     "layer": "module",
     "main": "",
-    "i18n": ["bundle"],
+    "i18n": [
+        "bundle"
+    ],
     "dependencies": {
         "agssearch": "^4.13.0",
         "apprt-binding": "^4.13.0",
@@ -23,7 +25,9 @@
     "CSS-Themes-Extension": [
         {
             "name": "*",
-            "files": ["./css/styles.css"]
+            "files": [
+                "./css/styles.css"
+            ]
         }
     ],
     "layout-widgets": [
@@ -41,7 +45,9 @@
         },
         {
             "widgetRole": "queryBuilderWidget",
-            "sublayout": ["desktop"],
+            "sublayout": [
+                "desktop"
+            ],
             "window": {
                 "marginBox": {
                     "w": 600,
@@ -55,7 +61,10 @@
         },
         {
             "widgetRole": "queryBuilderWidget",
-            "sublayout": ["tablet_landscape", "tablet_portrait"],
+            "sublayout": [
+                "tablet_landscape",
+                "tablet_portrait"
+            ],
             "window": {
                 "resizable": false,
                 "draggable": false,
@@ -67,7 +76,10 @@
         },
         {
             "widgetRole": "queryBuilderWidget",
-            "sublayout": ["mobile_landscape", "mobile_portrait"],
+            "sublayout": [
+                "mobile_landscape",
+                "mobile_portrait"
+            ],
             "window": {
                 "dockable": true,
                 "dockingBar": "${id}-dockingBarBottomLeft",
@@ -92,7 +104,9 @@
         },
         {
             "widgetRole": "editableQueryBuilderWidget",
-            "sublayout": ["desktop"],
+            "sublayout": [
+                "desktop"
+            ],
             "window": {
                 "marginBox": {
                     "w": 600,
@@ -106,7 +120,10 @@
         },
         {
             "widgetRole": "editableQueryBuilderWidget",
-            "sublayout": ["tablet_landscape", "tablet_portrait"],
+            "sublayout": [
+                "tablet_landscape",
+                "tablet_portrait"
+            ],
             "window": {
                 "resizable": false,
                 "draggable": false,
@@ -119,7 +136,10 @@
         },
         {
             "widgetRole": "editableQueryBuilderWidget",
-            "sublayout": ["mobile_landscape", "mobile_portrait"],
+            "sublayout": [
+                "mobile_landscape",
+                "mobile_portrait"
+            ],
             "window": {
                 "resizable": false,
                 "draggable": false,
@@ -143,7 +163,9 @@
         },
         {
             "widgetRole": "filterQueryBuilderWidget",
-            "sublayout": ["desktop"],
+            "sublayout": [
+                "desktop"
+            ],
             "window": {
                 "marginBox": {
                     "w": 600,
@@ -157,7 +179,10 @@
         },
         {
             "widgetRole": "filterQueryBuilderWidget",
-            "sublayout": ["tablet_landscape", "tablet_portrait"],
+            "sublayout": [
+                "tablet_landscape",
+                "tablet_portrait"
+            ],
             "window": {
                 "resizable": false,
                 "draggable": false,
@@ -169,7 +194,10 @@
         },
         {
             "widgetRole": "filterQueryBuilderWidget",
-            "sublayout": ["mobile_landscape", "mobile_portrait"],
+            "sublayout": [
+                "mobile_landscape",
+                "mobile_portrait"
+            ],
             "window": {
                 "resizable": false,
                 "draggable": false,
@@ -192,7 +220,9 @@
                 "defaultLinkOperator": "$or",
                 "defaultSpatialRelation": "everywhere",
                 "useCurrentMapExtent": false,
-                "availableSpatialInputActions": ["*"],
+                "availableSpatialInputActions": [
+                    "*"
+                ],
                 "allowMultipleSpatialInputs": true,
                 "visibleElements": {
                     "defaultMode": {
@@ -218,26 +248,59 @@
                 "defaultQueryOptions": {
                     "ignoreCase": false
                 },
-                "hiddenFields": ["objectid", "OBJECTID", "shape"],
-                "hiddenFieldTypes": ["oid", "guid", "global-id"],
-                "hiddenSortFields": ["objectid", "OBJECTID", "shape"],
+                "hiddenFields": [
+                    "objectid",
+                    "OBJECTID",
+                    "shape"
+                ],
+                "hiddenFieldTypes": [
+                    "oid",
+                    "guid",
+                    "global-id"
+                ],
+                "hiddenSortFields": [
+                    "objectid",
+                    "OBJECTID",
+                    "shape"
+                ],
+                "enableTempStore": false,
                 "symbols": {
                     "point": {
                         "type": "simple-marker",
-                        "color": [255, 0, 0, 0.25],
+                        "color": [
+                            255,
+                            0,
+                            0,
+                            0.25
+                        ],
                         "style": "circle",
                         "outline": {
-                            "color": [255, 0, 0, 1],
+                            "color": [
+                                255,
+                                0,
+                                0,
+                                1
+                            ],
                             "width": 2
                         },
                         "size": 10
                     },
                     "polygon": {
                         "type": "simple-fill",
-                        "color": [255, 0, 0, 0.25],
+                        "color": [
+                            255,
+                            0,
+                            0,
+                            0.25
+                        ],
                         "style": "solid",
                         "outline": {
-                            "color": [255, 0, 0, 1],
+                            "color": [
+                                255,
+                                0,
+                                0,
+                                1
+                            ],
                             "width": "2px"
                         }
                     }
@@ -359,7 +422,9 @@
         },
         {
             "name": "QueryController",
-            "provides": ["dn_querybuilder.QueryController"],
+            "provides": [
+                "dn_querybuilder.QueryController"
+            ],
             "references": [
                 {
                     "name": "_mapWidgetModel",
@@ -405,6 +470,10 @@
                     "name": "_resultViewerService",
                     "providing": "result-api.ResultViewerService",
                     "cardinality": "0..1"
+                },
+                {
+                    "name": "_agsStoreFactory",
+                    "providing": "agssearch.AGSStoreFactory"
                 }
             ]
         },
@@ -446,7 +515,9 @@
         {
             "name": "MetadataAnalyzer",
             "immediate": true,
-            "provides": ["dn_querybuilder.MetadataAnalyzer"],
+            "provides": [
+                "dn_querybuilder.MetadataAnalyzer"
+            ],
             "references": [
                 {
                     "name": "_logService",
@@ -467,7 +538,9 @@
         {
             "name": "QueryBuilderToggleTool",
             "impl": "ct/tools/Tool",
-            "provides": ["ct.tools.Tool"],
+            "provides": [
+                "ct.tools.Tool"
+            ],
             "propertiesConstructor": true,
             "properties": {
                 "id": "queryBuilderToggleTool",

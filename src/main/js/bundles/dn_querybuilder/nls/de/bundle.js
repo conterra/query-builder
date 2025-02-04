@@ -47,6 +47,7 @@ export default {
         resetSpatialInput: "Räumliche Einschränkung entfernen",
         negateSpatialInput: "Außerhalb der ausgewählten Geometrie suchen",
         filterTitle: "Filter",
+        tempStoreTitle: "Ergebnisse der vorherigen Suche",
         setFilterActionLabel: "Karteninhalt filtern",
         resetFilterActionLabel: "Filter zurücksetzen",
         conditionFieldsetLegend: "Bedingung",

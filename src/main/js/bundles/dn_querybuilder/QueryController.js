@@ -98,6 +98,10 @@ export default class QueryController {
                     this._setProcessing(tool, false, queryBuilderWidgetModel);
                     return;
                 } else {
+                    if (queryBuilderWidgetModel.enableTempStore) {
+                        this._registerTempStore(store, complexQuery, queryBuilderWidgetModel);
+                    }
+
                     // result-ui
                     const resultUiConfigured = this._resultViewerService;
                     if (resultUiConfigured) {
@@ -206,6 +210,41 @@ export default class QueryController {
                 that.searchReplacer(value);
             }
         });
+    }
+
+    async _registerTempStore(store, complexQuery, queryBuilderWidgetModel) {
+        let tempStore;
+        if (store.url) {
+            tempStore = await this._agsStoreFactory.createStore({
+                id: "querybuilder_temp",
+                url: store.url
+            });
+        }
+        if (store.layerId) {
+            tempStore = await this._agsStoreFactory.createStore({
+                id: "querybuilder_temp",
+                layerId: store.layerId
+            });
+        }
+        const filter = new Filter(tempStore, complexQuery);
+        const storeTitle = queryBuilderWidgetModel.getSelectedStoreTitle(store.id);
+        if (this.#serviceRegistration) {
+            const registration = this.#serviceRegistration;
+            // clear the reference
+            this.#serviceRegistration = null;
+            if (registration) {
+                // call unregister
+                registration.unregister();
+            }
+        }
+        const title = storeTitle ? this.#i18n.tempStoreTitle + " (" + storeTitle + ")" : this.#i18n.tempStoreTitle;
+        const serviceProperties = {
+            id: "querybuilder_temp",
+            title: title,
+            useIn: ["querybuilder"]
+        };
+        const interfaces = ["ct.api.Store"];
+        this.#serviceRegistration = this.#bundleContext.registerService(interfaces, filter, serviceProperties);
     }
 
     _setProcessing(tool, processing, queryBuilderWidgetModel) {
